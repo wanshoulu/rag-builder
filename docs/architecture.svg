@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="940" height="330" viewBox="0 0 940 330" font-family="'PingFang SC','Microsoft YaHei','Segoe UI',sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/>
+    </marker>
+    <marker id="arrBlue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/>
+    </marker>
+  </defs>
+
+  <style>
+    .box { fill: #ffffff; stroke: #cbd5e1; stroke-width: 1.5; rx: 10; }
+    .t { font-size: 14px; font-weight: 600; fill: #0f172a; }
+    .s { font-size: 10.5px; fill: #64748b; }
+    .lab { font-size: 12px; font-weight: 700; fill: #94a3b8; }
+  </style>
+
+  <text x="20" y="34" class="lab">① 离线索引链（构建知识库）</text>
+
+  <rect x="20" y="46" width="130" height="72" rx="10" class="box"/>
+  <text x="85" y="76" text-anchor="middle" class="t">各类文档</text>
+  <text x="85" y="96" text-anchor="middle" class="s">md / txt / pdf / docx</text>
+  <text x="85" y="110" text-anchor="middle" class="s">pptx / xlsx / html …</text>
+
+  <line x1="152" y1="82" x2="190" y2="82" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <rect x="192" y="46" width="130" height="72" rx="10" class="box"/>
+  <text x="257" y="76" text-anchor="middle" class="t">多格式解析</text>
+  <text x="257" y="96" text-anchor="middle" class="s">multi-format-parser</text>
+  <text x="257" y="110" text-anchor="middle" class="s">统一落盘为 Markdown</text>
+
+  <line x1="324" y1="82" x2="362" y2="82" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <rect x="364" y="46" width="130" height="72" rx="10" class="box"/>
+  <text x="429" y="76" text-anchor="middle" class="t">七策略分块</text>
+  <text x="429" y="96" text-anchor="middle" class="s">chunker · auto 启发式</text>
+  <text x="429" y="110" text-anchor="middle" class="s">默认 1024 字 / 128 重叠</text>
+
+  <line x1="496" y1="82" x2="534" y2="82" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <rect x="536" y="46" width="140" height="72" rx="10" class="box" stroke="#f59e0b" stroke-dasharray="5 3"/>
+  <text x="606" y="76" text-anchor="middle" class="t">向量化嵌入</text>
+  <text x="606" y="96" text-anchor="middle" class="s">Qwen text-embedding-v4</text>
+  <text x="606" y="110" text-anchor="middle" class="s">可选 · 磁盘缓存去重</text>
+
+  <line x1="678" y1="82" x2="716" y2="82" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <rect x="718" y="46" width="202" height="72" rx="10" class="box" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="819" y="72" text-anchor="middle" class="t">索引 .rag-cache.json</text>
+  <text x="819" y="92" text-anchor="middle" class="s">三段 sha256 digest · 增量重建</text>
+  <text x="819" y="106" text-anchor="middle" class="s">向量 + 分块同文件落盘</text>
+
+  <rect x="536" y="134" width="240" height="26" rx="7" fill="#fffbeb" stroke="#f59e0b" stroke-dasharray="4 3"/>
+  <text x="656" y="151" text-anchor="middle" font-size="11" fill="#b45309">未配 QWEN_KEY → TF-IDF 关键词兜底</text>
+
+  <path d="M 819 118 V 160 H 250 V 196" fill="none" stroke="#2563eb" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+  <text x="530" y="154" text-anchor="middle" font-size="11" fill="#2563eb">rag-engine 加载索引（KB 级单例池）</text>
+
+  <text x="20" y="216" class="lab">② 在线检索链（问答消费）</text>
+
+  <rect x="20" y="228" width="120" height="72" rx="10" class="box"/>
+  <text x="80" y="258" text-anchor="middle" class="t">用户提问</text>
+  <text x="80" y="278" text-anchor="middle" class="s">POST /api/rag/answer</text>
+
+  <line x1="142" y1="264" x2="180" y2="264" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <rect x="182" y="228" width="150" height="72" rx="10" class="box"/>
+  <text x="257" y="258" text-anchor="middle" class="t">两路召回</text>
+  <text x="257" y="278" text-anchor="middle" class="s">BM25 关键词（中文 bigram）</text>
+  <text x="257" y="292" text-anchor="middle" class="s">+ 向量余弦相似度</text>
+
+  <line x1="334" y1="264" x2="372" y2="264" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <rect x="374" y="228" width="140" height="72" rx="10" class="box"/>
+  <text x="444" y="258" text-anchor="middle" class="t">RRF 融合</text>
+  <text x="444" y="278" text-anchor="middle" class="s">k = 60 · 0.6 / 0.4 加权</text>
+  <text x="444" y="292" text-anchor="middle" class="s">keyword / vector / hybrid</text>
+
+  <line x1="516" y1="264" x2="554" y2="264" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <rect x="556" y="228" width="130" height="72" rx="10" class="box"/>
+  <text x="621" y="258" text-anchor="middle" class="t">Top-K 证据</text>
+  <text x="621" y="278" text-anchor="middle" class="s">≤ 5 块 · ≤ 12000 字</text>
+  <text x="621" y="292" text-anchor="middle" class="s">防注入提示词装配</text>
+
+  <line x1="688" y1="264" x2="726" y2="264" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <rect x="728" y="228" width="192" height="72" rx="10" class="box" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="824" y="254" text-anchor="middle" class="t">引用式回答</text>
+  <text x="824" y="274" text-anchor="middle" class="s">DeepSeek 生成 · [1][2] 引用标注</text>
+  <text x="824" y="288" text-anchor="middle" class="s">无 DEEPSEEK_KEY → 仅检索降级</text>
+</svg>

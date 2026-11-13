@@ -785,7 +785,7 @@ $('btnAsk').addEventListener('click', function () {
     $('answerBox').innerHTML =
       '<div class="result-item">' +
       '<div class="result-head">' + (MODE_BADGE[d.mode] || '') +
-      (d.error ? '<span class="score" style="color:var(--red)">生成异常：' + esc(d.error) + '</span>' : '') + '</div>' +
+      (d.error && d.mode !== 'RETRIEVAL_ONLY' ? '<span class="score" style="color:var(--red)">生成异常：' + esc(typeof d.error === 'string' ? d.error : (d.error && d.error.message) || '未知错误') + '</span>' : '') + '</div>' +
       '<div class="answer-text">' + (d.answer ? esc(d.answer) : (d.mode === 'NO_RESULT' ? '知识库中未检索到与问题相关的内容。' : '未生成答案文本，请参考下方引用来源。')) + '</div>' +
       '</div>' +
       (cites ? '<div class="card-title" style="margin-top:12px">引用来源（' + (d.citations || []).length + ' 条，点击可展开）</div>' + cites : '');
