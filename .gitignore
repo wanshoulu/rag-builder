@@ -1,0 +1,19 @@
+# 依赖
+node_modules/
+
+# 本机密钥与配置（绝不提交）
+.env
+.env.*
+!.env.example
+*.key
+
+# 运行时产物（种子 data/sample/ 保留入库）
+data/kb/
+data/embeddings-cache.json
+data/embeddings-cache-*.json
+data/*.log
+
+# 系统噪声
+.DS_Store
+Thumbs.db
+*.log

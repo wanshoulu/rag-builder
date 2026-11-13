@@ -1,0 +1,29 @@
+{
+  "name": "rag-builder",
+  "version": "1.0.0",
+  "private": false,
+  "description": "RAG 向量知识构建工具链：文档解析 → 分块 → 嵌入 → 向量索引 → 混合检索（向量+BM25）→ RAG 问答。零框架、零数据库、离线可跑。",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test tests/*.test.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT",
+  "keywords": [
+    "rag",
+    "vector-search",
+    "bm25",
+    "embedding",
+    "knowledge-base",
+    "chunking",
+    "hybrid-search"
+  ],
+  "dependencies": {
+    "adm-zip": "^0.6.1",
+    "mammoth": "^1.12.0",
+    "pdf-parse": "^2.4.5"
+  }
+}
